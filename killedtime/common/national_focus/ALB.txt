@@ -1,0 +1,23 @@
+focus_tree = {
+    id = ALB_focus
+	
+	country = {
+	    factor = 0
+		modifier = {
+		    add = 10
+			tag = ALB
+		}
+	}
+	
+	default = no
+	
+	focus = {
+	    id = focus1
+		icon = GFX_goal_generic_improve_relations
+	    x = 2
+	    y = 0
+	    cost = 5
+	    completion_reward = {
+	        add_political_power = 50
+	    }
+	}
