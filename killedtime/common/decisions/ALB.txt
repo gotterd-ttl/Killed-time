@@ -1,0 +1,27 @@
+ALB_puppet_regimes_category = {
+    
+	montenegro_decision = {
+	    
+		icon = infiltrate_state
+		
+		allowed = {
+		    tag = ALB
+		}
+		
+		available = {
+		    is_subject = no
+			
+			controls_state = 105
+		}
+		
+		complete_effect = {
+		    release_autonomy = {
+			    target = MNT
+				autonomy_state = autonomy_integrated_puppet
+			}
+			MNT = {
+			    load_focus_tree = generic_focus
+			}
+		}
+	}
+}

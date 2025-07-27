@@ -1,0 +1,176 @@
+add_namespace = albania
+
+country_event = {
+    id = albania.1
+	title = albania.1.t
+	desc = albania.1.d
+	picture = GFX_report_event_canada_patriation
+	
+	is_triggered_only = yes
+	
+	option = {
+	    name = albania.1.a
+		
+		ai_chance = {
+		    base = 100
+		}
+		
+		add_political_power = 50
+	}
+}
+
+country_event = {
+    id = albania.2
+	title = albania.2.t
+	desc = albania.2.d
+	picture = GFX_report_event_canada_patriation
+	
+	is_triggered_only = yes
+	
+	option = {
+	    name = albania.2.a
+		
+		ai_chance = {
+		    base = 100
+		}
+		
+		add_political_power = 50
+	}
+}
+
+country_event = {
+    id = albania.3
+	title = albania.3.t
+	desc = albania.3.d
+	picture = GFX_report_event_canada_patriation
+	
+	is_triggered_only = yes
+	
+	option = {
+	    name = albania.3.a
+		
+		ai_chance = {
+		    base = 100
+		}
+		
+		add_political_power = 25
+	}
+}
+
+country_event = {
+    id = albania.4
+	title = albania.4.t
+	desc = albania.4.d
+	picture = GFX_report_event_canada_patriation
+	
+	is_triggered_only = yes
+	
+	option = {
+	    name = albania.4.a
+		
+		ai_chance = {
+		    base = 100
+		}
+		
+		add_political_power = 25
+	}
+}
+
+country_event = {
+    id = albania.5
+	title = albania.5.t
+	desc = albania.5.d
+	picture = GFX_report_event_canada_patriation
+	
+	is_triggered_only = yes
+	
+	option = {
+	    name = albania.5.a
+		
+		ai_chance = {
+		    base = 100
+		}
+		
+		add_war_support = 0.05
+	}
+}
+
+country_event = {
+    id = albania.6
+	title = albania.6.t
+	desc = albania.6.d
+	picture = GFX_report_event_canada_patriation
+	
+	is_triggered_only = yes
+	
+	option = {
+	    name = albania.6.a
+		
+		ai_chance = {
+		    base = 100
+		}
+		
+		add_political_power = -50
+	}
+}
+
+country_event = {
+    id = albania.7
+	title = albania.7.t
+	desc = albania.7.d
+	picture = GFX_report_event_canada_patriation
+	
+	is_triggered_only = yes
+	
+	option = {
+	    name = albania.7.a
+		
+		ai_chance = {
+		    base = 100
+		}
+		
+		army_experience = -100
+		add_command_power = -75
+	}
+}
+
+country_event = {
+    id = albania.8
+	title = albania.8.t
+	desc = albania.8.d
+	picture = GFX_report_event_canada_patriation
+	
+	is_triggered_only = yes
+	
+	option = {
+	    name = albania.8.a
+		
+		ai_chance = {
+		    base = 100
+		}
+		
+		add_popularity = {
+		    ideology = fascism
+			popularity = 0.1
+		}
+	}
+}
+
+country_event = {
+    id = albania.9
+	title = albania.9.t
+	desc = albania.9.d
+	picture = GFX_report_event_canada_patriation
+	
+	is_triggered_only = yes
+	
+	option = {
+	    name = albania.9.a
+		
+		ai_chance = {
+		    base = 100
+		}
+		
+		add_war_support = 0.1
+	}
+}

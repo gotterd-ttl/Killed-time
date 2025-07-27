@@ -1,0 +1,1218 @@
+focus_tree = {
+    id = ALB_focus
+	
+	country = {
+	    factor = 0
+		modifier = {
+		    add = 10
+			tag = ALB
+		}
+	}
+	
+	default = no
+	
+	focus = {
+	    id = ALB_strange_guests
+		icon = GFX_goal_generic_improve_relations
+	    x = 50
+	    y = 0
+	    cost = 0.2
+	    completion_reward = {
+			country_event = albania.1
+			hidden_effect = {
+			    set_rule = {
+			    can_join_factions = no
+				can_create_collaboration_government = no
+				can_create_factions = no
+				can_force_government = no
+				can_send_volunteers = no
+				can_puppet = no
+			}
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_offer
+		icon = GFX_goal_generic_improve_relations
+	    x = 0
+	    y = 1
+		prerequisite = { focus = ALB_strange_guests }
+		relative_position_id = ALB_strange_guests
+	    cost = 0.2
+	    completion_reward = {
+			country_event = albania.2
+		}
+	}
+	
+	focus = {
+	    id = ALB_arrest_them
+		icon = GFX_goal_generic_improve_relations
+	    x = -2
+	    y = 2
+		prerequisite = { focus = ALB_offer }
+		relative_position_id = ALB_offer
+		mutually_exclusive = { focus = ALB_accept_offer }
+	    cost = 0.2
+	    completion_reward = {
+			add_war_support = 0.05
+			add_stability = 0.05
+			hidden_effect = {
+			    country_event = albania.3
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_accept_offer
+		icon = GFX_goal_generic_improve_relations
+	    x = 2
+	    y = 2
+		prerequisite = { focus = ALB_offer }
+		relative_position_id = ALB_offer
+		mutually_exclusive = { focus = ALB_arrest_them }
+	    cost = 0.2
+	    completion_reward = {
+			add_stability = -0.1
+			add_war_support = -0.1
+			hidden_effect = {
+			    country_event = albania.4
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_interrogate_them
+		icon = GFX_goal_generic_improve_relations
+	    x = -6
+	    y = 4
+		prerequisite = { focus = ALB_arrest_them }
+		relative_position_id = ALB_arrest_them
+	    cost = 2
+	    completion_reward = {
+			country_event = albania.5
+		}
+	}
+	
+	focus = {
+	    id = ALB_little_purge
+		icon = GFX_goal_generic_improve_relations
+	    x = -3
+	    y = 2
+		prerequisite = { focus = ALB_arrest_them }
+		relative_position_id = ALB_arrest_them
+	    cost = 2
+	    completion_reward = {
+			add_manpower = -1500
+			hidden_effect = {
+			    country_event = albania.6
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_purge_goverment
+		icon = GFX_goal_generic_improve_relations
+	    x = -1
+	    y = 2
+		prerequisite = { focus = ALB_arrest_them }
+		relative_position_id = ALB_arrest_them
+	    cost = 2
+	    completion_reward = {
+			add_manpower = -100
+			hidden_effect = {
+			    country_event = albania.7
+			}
+		}
+	}
+		
+	focus = {
+	    id = ALB_future_of_albania
+		icon = GFX_goal_generic_improve_relations
+	    x = 1
+	    y = 2
+		prerequisite = { focus = ALB_little_purge }
+		prerequisite = { focus = ALB_purge_goverment }
+		relative_position_id = ALB_little_purge
+	    cost = 2
+	    completion_reward = {
+			country_event = albania.8
+		}
+	}
+	
+	focus = {
+	    id = ALB_imperia_starts_here
+		icon = GFX_goal_generic_improve_relations
+	    x = 0
+	    y = 2
+		prerequisite = { focus = ALB_future_of_albania }
+		prerequisite = { focus = ALB_interrogate_them }
+		relative_position_id = ALB_future_of_albania
+	    cost = 2
+	    completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.4
+			}
+			set_politics = {
+			    ruling_party = fascism
+				elections_allowed = no
+			}
+			add_country_leader_role = {
+			    character = ALB_king_zog
+				promote_leader = yes
+				country_leader = {
+				    ideology = fascism_ideology
+				}
+			}
+			set_party_name = {
+			    ideology = fascism
+				long_name = ALB_imperium_party_long
+				name = ALB_imperium_party
+			}
+			add_ideas = ALB_imperia_path
+			set_cosmetic_tag = ALB_imperia
+			set_country_leader_name = {
+			    name = ALB_imperor_zogu
+			}
+			set_country_leader_description = {
+			    desc = ALB_imperor_zogu_desc
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	focus = {
+	    id = ALB_researches_start
+		icon = GFX_goal_generic_improve_relations
+	    x = 6
+	    y = 0
+		available = {
+		    OR = {
+			    has_completed_focus = ALB_interrogate_them
+				has_completed_focus = ALB_accept_offer
+			}
+		}
+	    cost = 1
+	    completion_reward = {
+		    set_research_slots = 5
+		}
+	}
+
+	focus = {
+	    id = ALB_production_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = -8
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+				ahead_reduction = 1948
+				uses = 100
+				category = cat_production
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_prom_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_production_researches }
+		relative_position_id = ALB_production_researches
+	    x = 0
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = concentrated_industry_category
+				category = dispersed_industry_category
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_construction_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = -6
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = construction_tech
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_synth_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = -7
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = synth_resources
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_electronics_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = -4
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = electronics
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_forts_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = -5
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = cat_fortification
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_inf_weapons_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = -1
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = infantry_weapons
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_night_vision_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_inf_weapons_researches }
+		relative_position_id = ALB_inf_weapons_researches
+	    x = 0
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = night_vision
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_motorized_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 1
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = motorized_equipment
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_spec_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 0
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = cat_special_forces_generic
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_support_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 2
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = support_tech
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_trains_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 3
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = train_tech
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_artillery_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 7
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = mio_cat_artillery
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_anti_air_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_artillery_researches }
+		relative_position_id = ALB_artillery_researches
+	    x = -1
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = cat_anti_air
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_anti_tank_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_artillery_researches }
+		relative_position_id = ALB_artillery_researches
+	    x = 1
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = cat_anti_tank
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_rocket_artillery_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_artillery_researches }
+		prerequisite = { focus = ALB_anti_air_researches }
+		prerequisite = { focus = ALB_anti_tank_researches }
+		relative_position_id = ALB_artillery_researches
+	    x = 0
+	    y = 3
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = rocketry
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_first_tank_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 14
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    set_technology = {
+			    gwtank_chassis = 1
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_light_tanks_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_first_tank_researches }
+		relative_position_id = ALB_first_tank_researches
+	    x = -2
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = cat_light_armor
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_medium_tanks_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_first_tank_researches }
+		relative_position_id = ALB_first_tank_researches
+	    x = 0
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = cat_medium_armor
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_heavy_tanks_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_first_tank_researches }
+		relative_position_id = ALB_first_tank_researches
+	    x = 2
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = cat_heavy_armor
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_engine_armor_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_light_tanks_researches }
+		prerequisite = { focus = ALB_medium_tanks_researches }
+		prerequisite = { focus = ALB_heavy_tanks_researches }
+		relative_position_id = ALB_first_tank_researches
+	    x = 0
+	    y = 3
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = armor
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_light_air_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 19
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = light_air
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_medium_air_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 21
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = medium_air
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_heavy_air_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 23
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = heavy_air
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_transport_air_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = {
+		    focus = ALB_medium_air_researches
+			focus = ALB_heavy_air_researches
+		}
+		relative_position_id = ALB_medium_air_researches
+	    x = 0
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = transport_planes_cat
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_bombs_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = {
+		    focus = ALB_medium_air_researches
+			focus = ALB_heavy_air_researches
+		}
+		relative_position_id = ALB_heavy_air_researches
+	    x = 0
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = cat_air_bombs
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_guns_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_light_air_researches }
+		relative_position_id = ALB_light_air_researches
+	    x = 0
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = cat_air_guns
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_engine_air_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 25
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = cat_air_engine
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_other_air_modules_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_guns_researches }
+		prerequisite = { focus = ALB_engine_air_researches }
+		prerequisite = { focus = ALB_bombs_researches }
+		relative_position_id = ALB_engine_air_researches
+	    x = -1
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = plane_modules_tech
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_dd_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 29
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = dd_tech
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_cl_ca_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 31
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = cl_tech
+				category = ca_tech
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_bb_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 33
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = bb_tech
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_cv_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 35
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = cv_tech
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_ss_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 37
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = ss_tech
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_naval_artillery_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 30
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = naval_artillery
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_torpedos_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 36
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = cat_torpedoes
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_tp_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 32
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = tp_tech
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_mines_researches
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_start }
+		relative_position_id = ALB_researches_start
+	    x = 34
+	    y = 2
+	    cost = 1
+	    completion_reward = {
+		    add_tech_bonus = {
+			    ahead_reduction = 1948
+				uses = 100
+				category = naval_mines
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	focus = {
+	    id = ALB_industry_of_future_1
+		icon = GFX_goal_generic_improve_relations
+	    x = 7
+	    y = 7
+	    cost = 1
+		available = {
+		    OR = {
+			    has_completed_focus = ALB_interrogate_them
+				has_completed_focus = ALB_accept_offer
+			}
+		}
+	    completion_reward = {
+		    add_ideas = ALB_industry_future_1
+		}
+	}
+	
+	focus = {
+	    id = ALB_industry_of_future_2
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_industry_of_future_1 }
+		relative_position_id = ALB_industry_of_future_1
+	    x = 0
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    swap_ideas = {
+			    remove_idea = ALB_industry_future_1
+                add_idea = ALB_industry_future_2
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_industry_of_future_3
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_industry_of_future_2 }
+		relative_position_id = ALB_industry_of_future_2
+	    x = 0
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    swap_ideas = {
+			    remove_idea = ALB_industry_future_2
+                add_idea = ALB_industry_future_3
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_industry_of_future_4
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_industry_of_future_3 }
+		relative_position_id = ALB_industry_of_future_3
+	    x = 0
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    swap_ideas = {
+			    remove_idea = ALB_industry_future_3
+                add_idea = ALB_industry_future_4
+			}
+		}
+	}
+	
+	
+	
+	focus = {
+	    id = ALB_researches_of_future_1
+		icon = GFX_goal_generic_improve_relations
+	    x = 9
+	    y = 7
+	    cost = 1
+		available = {
+		    OR = {
+			    has_completed_focus = ALB_interrogate_them
+				has_completed_focus = ALB_accept_offer
+			}
+		}
+	    completion_reward = {
+		    add_ideas = ALB_researches_future_1
+		}
+	}
+	
+	focus = {
+	    id = ALB_researches_of_future_2
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_of_future_1 }
+		relative_position_id = ALB_researches_of_future_1
+	    x = 0
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    swap_ideas = {
+			    remove_idea = ALB_researches_future_1
+                add_idea = ALB_researches_future_2
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_researches_of_future_3
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_of_future_2 }
+		relative_position_id = ALB_researches_of_future_2
+	    x = 0
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    swap_ideas = {
+			    remove_idea = ALB_researches_future_2
+                add_idea = ALB_researches_future_3
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_researches_of_future_4
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_researches_of_future_3 }
+		relative_position_id = ALB_researches_of_future_3
+	    x = 0
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    swap_ideas = {
+			    remove_idea = ALB_researches_future_3
+                add_idea = ALB_researches_future_4
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	focus = {
+	    id = ALB_building_of_future_1
+		icon = GFX_goal_generic_improve_relations
+	    x = 11
+	    y = 7
+	    cost = 1
+		available = {
+		    OR = {
+			    has_completed_focus = ALB_interrogate_them
+				has_completed_focus = ALB_accept_offer
+			}
+		}
+	    completion_reward = {
+		    add_ideas = ALB_building_future_1
+		}
+	}
+	
+	focus = {
+	    id = ALB_building_of_future_2
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_building_of_future_1 }
+		relative_position_id = ALB_building_of_future_1
+	    x = 0
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    swap_ideas = {
+			    remove_idea = ALB_building_future_1
+                add_idea = ALB_building_future_2
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_building_of_future_3
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_building_of_future_2 }
+		relative_position_id = ALB_building_of_future_2
+	    x = 0
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    swap_ideas = {
+			    remove_idea = ALB_building_future_2
+                add_idea = ALB_building_future_3
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_building_of_future_4
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_building_of_future_3 }
+		relative_position_id = ALB_building_of_future_3
+	    x = 0
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    swap_ideas = {
+			    remove_idea = ALB_building_future_3
+                add_idea = ALB_building_future_4
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	focus = {
+	    id = ALB_army_of_future_1
+		icon = GFX_goal_generic_improve_relations
+	    x = 13
+	    y = 7
+	    cost = 1
+		available = {
+		    OR = {
+			    has_completed_focus = ALB_interrogate_them
+				has_completed_focus = ALB_accept_offer
+			}
+		}
+	    completion_reward = {
+		    add_ideas = ALB_army_future_1
+		}
+	}
+	
+	focus = {
+	    id = ALB_army_of_future_2
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_army_of_future_1 }
+		relative_position_id = ALB_army_of_future_1
+	    x = 0
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    swap_ideas = {
+			    remove_idea = ALB_army_future_1
+                add_idea = ALB_army_future_2
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_army_of_future_3
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_army_of_future_2 }
+		relative_position_id = ALB_army_of_future_2
+	    x = 0
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    swap_ideas = {
+			    remove_idea = ALB_army_future_2
+                add_idea = ALB_army_future_3
+			}
+		}
+	}
+	
+	focus = {
+	    id = ALB_army_of_future_4
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = ALB_army_of_future_3 }
+		relative_position_id = ALB_army_of_future_3
+	    x = 0
+	    y = 1
+	    cost = 1
+	    completion_reward = {
+		    swap_ideas = {
+			    remove_idea = ALB_army_future_3
+                add_idea = ALB_army_future_4
+			}
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    focus = {
+	    id = ALB_imperial_politic
+		icon = GFX_goal_generic_improve_relations
+	    x = 25
+	    y = 6
+		available = { has_completed_focus = ALB_imperia_starts_here }
+	    cost = 0.2
+	    completion_reward = {
+			country_event = albania.9
+		}
+	}
+	
+	focus = {
+	    id = ALB_need_greece
+		icon = GFX_goal_generic_improve_relations
+	    x = 0
+	    y = 1
+		prerequisite = { focus = ALB_imperial_politic }
+		relative_position_id = ALB_imperial_politic
+	    cost = 0.2
+	    completion_reward = {
+			add_timed_idea = {
+			    idea = ALB_to_greece
+				days = 180
+			}
+			declare_war_on = {
+			    target = GRE
+				type = annex_everything
+			}
+			
+			ROM = {
+			    diplomatic_relation = {
+				    country = GRE
+					relation = guarantee
+					active = no
+				}
+			}
+		}
+	}

@@ -1,0 +1,14 @@
+ALB_puppet_regimes_category = {
+
+	icon = GFX_decision_category_generic_prospect_for_resources
+	
+	priority = 90
+	
+	allowed = {
+		original_tag = ALB
+	}
+
+	visible = {
+	    original_tag = ALB
+	}
+}
